@@ -88,13 +88,13 @@
     .paper .info-inline td:nth-child(1), .paper .info-inline td:nth-child(3) { width: 16%; font-weight: 700; background: #fbfdff; }
     .paper .info-inline td:nth-child(2), .paper .info-inline td:nth-child(4) { width: 34%; }
     .paper .note-box { min-height: 78px; }
-    .paper .meta-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom: 8px; }
+    .paper .meta-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom: 12px; }
     .paper .tag { display:inline-block; padding:5px 10px; border-radius:999px; background:#eef5ff; color:#124f9f; font-size:11px; font-weight:700; }
-    .paper .two-col { display:grid; grid-template-columns: 0.95fr 1.25fr; gap: 14px; align-items:start; }
-    .paper .procedure { border:1px solid #444; padding: 10px 12px; min-height: 100%; }
+    .paper .two-col { display:grid; grid-template-columns: 0.95fr 1.25fr; gap: 16px; align-items:start; }
+    .paper .procedure { border:1px solid #444; padding: 12px 14px; min-height: 100%; }
     .paper .procedure h3, .paper .panel h3 { margin:0 0 8px; font: bold 13px/1.2 Arial, sans-serif; }
     .paper .procedure ol { margin:0; padding-left: 18px; }
-    .paper .panel { border:1px solid #444; padding: 8px; }
+    .paper .panel { border:1px solid #444; padding: 10px; }
     .paper .ref-cap { margin:6px 0 0; font-size: 11px; color: #444; }
     .paper .body-table td:first-child { width: 42%; font-weight: 700; background: #fbfdff; }
     .paper .result-pill { font-weight:700; }
@@ -116,16 +116,16 @@
 
 
 /* Output General: komposisi satu lembar 1:1 yang memanfaatkan seluruh halaman. */
-.paper.paper-general .output-content{top:0;left:0;width:1280px;height:1280px}
-.paper.paper-general .general-document{width:1280px;height:1280px;padding:48px 52px 40px;box-sizing:border-box;display:flex;flex-direction:column;font:17px/1.33 Arial,Helvetica,sans-serif;color:#1b2935}
-.paper.paper-general .general-document-head{text-align:center;border-bottom:3px solid #173d58;padding-bottom:17px;margin-bottom:24px}
+.paper.paper-general .output-content{top:40px;left:40px;width:1200px;height:1200px}
+.paper.paper-general .general-document{width:1200px;height:1200px;padding:38px 42px 34px;box-sizing:border-box;display:flex;flex-direction:column;font:17px/1.33 Arial,Helvetica,sans-serif;color:#1b2935}
+.paper.paper-general .general-document-head{text-align:center;border-bottom:3px solid #173d58;padding-bottom:15px;margin-bottom:20px}
 .paper.paper-general .general-document-eyebrow{font:bold 13px/1.25 Arial,sans-serif;color:#48677e;letter-spacing:1.7px;margin-bottom:10px}
 .paper.paper-general .general-document-head h1{font:bold 31px/1.2 Arial,sans-serif;color:#132b3e;margin:0 0 9px}
 .paper.paper-general .general-document-type{font:bold 15px/1.2 Arial,sans-serif;color:#315872;letter-spacing:1px}
 .paper.paper-general .general-document-section-label{font:bold 14px/1.3 Arial,sans-serif;letter-spacing:.8px;color:#173d58;margin:0 0 8px}
 .paper.paper-general table{margin:0!important;table-layout:fixed;width:100%;border-collapse:collapse}
 .paper.paper-general table th,.paper.paper-general table td{border:1px solid #9bacb8;padding:9px 11px;vertical-align:middle;white-space:normal;overflow-wrap:anywhere}
-.paper.paper-general .general-info{margin-bottom:22px!important}
+.paper.paper-general .general-info{margin-bottom:18px!important}
 .paper.paper-general .general-info td{height:51px;font-size:16px;border-color:#b2c1cb}
 .paper.paper-general .general-info td:nth-child(odd){width:15%!important;color:#355269;font-weight:700;background:#edf3f7}
 .paper.paper-general .general-info td:nth-child(even){width:35%!important;font-weight:600}
@@ -135,17 +135,50 @@
 .paper.paper-general .general-results tbody .parameter-row td{height:var(--parameter-height);font-size:16px;line-height:1.35}
 .paper.paper-general .general-results tbody .parameter-row td:nth-child(1){font-weight:600}
 .paper.paper-general .general-results tbody .parameter-row td:nth-child(3){color:#526575}
-.paper.paper-general .general-part-block{margin-top:22px;flex:1 1 auto;display:flex;flex-direction:column;min-height:85px}
-.paper.paper-general .general-part-content{border:1px solid #a8b9c5;padding:15px 16px;flex:1 1 auto;font-size:16px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;min-height:75px}
-.paper.paper-general .general-document-footer{display:flex;justify-content:space-between;margin-top:17px;border-top:1px solid #c9d4de;padding-top:10px;color:#64798a;font:12px/1.3 Arial,sans-serif;letter-spacing:.7px}
+.paper.paper-general .general-part-block{margin-top:16px;flex:0 0 auto;display:flex;flex-direction:column}
+.paper.paper-general .general-part-box{border:1.5px solid #9bacb8;background:#fff;display:flex;flex-direction:column}
+.paper.paper-general .general-part-box-title{padding:10px 14px;border-bottom:1px solid #9bacb8;background:#edf3f7;font:bold 14px/1.3 Arial,sans-serif;letter-spacing:.8px;color:#173d58}
+.paper.paper-general .general-part-content{padding:14px 16px;height:var(--note-height,140px);font-size:var(--note-font-size,16px);line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;display:block}
+.paper.paper-general .general-document-footer{display:flex;justify-content:space-between;margin-top:12px;border-top:1px solid #c9d4de;padding-top:10px;color:#64798a;font:12px/1.3 Arial,sans-serif;letter-spacing:.7px}
 
 /* Semua hasil pemeriksaan menggunakan kanvas persegi 1280 × 1280. */
 .paper.paper-general,.paper.paper-body{position:relative!important;width:1280px!important;height:1280px!important;min-width:1280px!important;min-height:1280px!important;max-height:1280px!important;padding:0!important;overflow:hidden!important;box-sizing:border-box!important}
-.paper .output-content{position:absolute;top:26px;left:26px;width:1228px;transform-origin:top left;box-sizing:border-box}
+.paper .output-content{position:absolute;top:40px;left:40px;width:1200px;height:1200px;transform-origin:top left;box-sizing:border-box}
 @media print{
  @page{size:1280px 1280px;margin:0}
  .paper.paper-general,.paper.paper-body{width:1280px!important;height:1280px!important;min-width:1280px!important}
 }
+
+/* Output Bocor Body: foto aktual memenuhi bidang utama dokumen 1:1. */
+.paper.paper-body .body-output{width:1200px;min-height:1200px;padding:26px 30px 22px;display:flex;flex-direction:column;box-sizing:border-box;font:15px/1.35 Arial,Helvetica,sans-serif;color:#192c3a}
+.paper.paper-body .body-output-head{text-align:center;border-bottom:3px solid #173d58;padding-bottom:13px;margin-bottom:15px}
+.paper.paper-body .body-output-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#537084;margin-bottom:6px}
+.paper.paper-body .body-output-head h1{font:bold 26px/1.15 Arial,sans-serif;color:#132b3e;margin:0 0 6px}
+.paper.paper-body .body-output-subtitle{font-size:13px;font-weight:700;letter-spacing:.8px;color:#315872}
+.paper.paper-body .body-output-label{font:bold 13px/1.25 Arial,sans-serif;color:#173d58;letter-spacing:.7px;margin:0 0 8px}
+.paper.paper-body .body-output-info{width:100%;border-collapse:collapse;table-layout:fixed;margin:0 0 17px}
+.paper.paper-body .body-output-info th,.paper.paper-body .body-output-info td{border:1px solid #adbdc9;padding:8px 10px;font-size:13px;overflow-wrap:anywhere;text-align:left}
+.paper.paper-body .body-output-info th{width:16%;background:#edf3f7;color:#38576a}
+.paper.paper-body .body-output-info td{width:34%}
+.paper.paper-body .body-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:19px}
+.paper.paper-body .body-evidence-card{min-width:0;border:1.5px solid #9bacb8;display:flex;flex-direction:column;background:#fff}
+.paper.paper-body .body-evidence-heading{background:#e3edf4;color:#183a53;text-align:center;font:bold 13px/1.3 Arial,sans-serif;padding:9px}
+.paper.paper-body .body-evidence-image{height:330px;min-height:0;display:grid;place-items:center;background:#f5f7f9;overflow:hidden}
+.paper.paper-body .body-evidence-image img{width:100%;height:100%;object-fit:contain;display:block}
+.paper.paper-body .body-evidence-empty{color:#788a98;font-size:14px}
+.paper.paper-body .body-evidence-time{border-top:1px solid #c5d1d9;min-height:40px;padding:8px;text-align:center;font-size:11px;color:#3b5669;overflow-wrap:anywhere}
+.paper.paper-body .body-output-bottom{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:16px;align-items:start}
+.paper.paper-body .body-results-table{border-collapse:collapse;width:100%;table-layout:fixed;margin:0 0 10px}
+.paper.paper-body .body-results-table td,.paper.paper-body .body-results-table th{border:1px solid #aabcc9;padding:9px 10px;font-size:13px;text-align:left;overflow-wrap:anywhere}
+.paper.paper-body .body-results-table th{width:24%;background:#edf3f7;color:#315166}
+.paper.paper-body .body-comment-box{border:1.5px solid #9bacb8}
+.paper.paper-body .body-comment-title{background:#edf3f7;border-bottom:1px solid #9bacb8;padding:9px 11px;font:bold 12px Arial,sans-serif;color:#173d58}
+.paper.paper-body .body-comment-content{padding:11px;min-height:100px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.42;font-size:13px}
+.paper.paper-body .body-reference-panel{min-width:0}
+.paper.paper-body .body-reference-img{width:100%;height:155px;object-fit:contain;display:block;border:1px solid #aabcc9;background:#fff}
+.paper.paper-body .body-reference-panel ol{margin:9px 0 0;padding-left:19px;font-size:12px;line-height:1.44}
+.paper.paper-body .body-output-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #c9d4de;padding-top:10px;margin-top:auto;font-size:11px;letter-spacing:.5px;color:#64798a}
+
 /* Mobile-first photo evidence and export scale */
 .photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .photo-card{border:1px solid #d7e3ed;border-radius:13px;padding:12px;background:#fff;min-width:0}
@@ -538,9 +571,15 @@ function renderGeneralPreview() {
   const info = state.data.info;
   const sections = applicableRows();
   const totalItems = sections.reduce((n, [,items])=>n+items.length,0);
-  // Ruang tabel berubah mengikuti jumlah item. Pada unit dengan sedikit
-  // parameter, hasil tetap memakai seluruh bidang dokumen, bukan hanya bagian atas.
-  const rowHeight = Math.max(38, Math.min(102, Math.floor(780 / Math.max(1,totalItems+sections.length*0.7))));
+  const noteText = String(state.data.general.partNote || '—');
+  const noteLength = noteText.trim() === '—' ? 0 : noteText.length;
+  const noteFontSize = Math.max(12, 16 - Math.min(4, Math.floor(noteLength / 220)));
+  const estimatedNoteLines = Math.max(1, Math.ceil(noteLength / 72));
+  const noteHeight = Math.max(120, Math.min(250, 92 + estimatedNoteLines * (noteFontSize + 2)));
+  const rowSpace = 675 - Math.max(0, noteHeight - 120);
+  // Tinggi baris ikut menyesuaikan jumlah item dan panjang catatan,
+  // sehingga bagian catatan tetap punya ruang tanpa overlap dengan footer.
+  const rowHeight = Math.max(34, Math.min(102, Math.floor(rowSpace / Math.max(1,totalItems+sections.length*0.7))));
   const bodyRows = sections.map(([group, items]) => `
     <tr class="group-row"><td colspan="5">${escapeHtml(group)}</td></tr>
     ${items.map(({item, originalIndex}) => {
@@ -550,7 +589,7 @@ function renderGeneralPreview() {
       return `<tr class="parameter-row"><td>${escapeHtml(name)}</td><td>${escapeHtml(rec)}</td><td class="center">${escapeHtml(unit)}</td><td>${escapeHtml(current.awal || '')}</td><td>${escapeHtml(current.akhir || '')}</td></tr>`;
     }).join('')}`).join('');
   return `
-    <div class="general-document" style="--parameter-height:${rowHeight}px">
+    <div class="general-document" style="--parameter-height:${rowHeight}px;--note-height:${noteHeight}px;--note-font-size:${noteFontSize}px">
       <div class="general-document-head">
         <div class="general-document-eyebrow">TECHNICAL SUPPORT / REPAIR INDOOR</div>
         <h1>CHECKLIST UNIT PENDINGIN</h1>
@@ -574,8 +613,10 @@ function renderGeneralPreview() {
         <tbody>${bodyRows}</tbody>
       </table>
       <div class="general-part-block">
-        <div class="general-document-section-label">CATATAN PERGANTIAN PART / TINDAKAN</div>
-        <div class="general-part-content">${escapeHtml(state.data.general.partNote || '—')}</div>
+        <div class="general-part-box">
+          <div class="general-part-box-title">CATATAN PERGANTIAN PART / TINDAKAN</div>
+          <div class="general-part-content">${escapeHtml(noteText)}</div>
+        </div>
       </div>
       <div class="general-document-footer"><span>REPAIR INDOOR · UNIT PENDINGIN</span><span>TECHNICAL SUPPORT</span></div>
     </div>`;
@@ -583,54 +624,66 @@ function renderGeneralPreview() {
 function renderBocorBodyPreview() {
   const info = state.data.info;
   const bb = state.data.bocorBody;
+  const val = (v) => escapeHtml(v || '—');
+  const psi = (v) => escapeHtml(v || '—') + ' psi';
+  const photoCards = ['1 JAM', '3 JAM', '12 JAM'].map((name, i) => {
+    const photo = (bb.photos || [])[i];
+    return `<div class="body-evidence-card">
+      <div class="body-evidence-heading">${name}</div>
+      <div class="body-evidence-image">${photo?.data
+        ? `<img src="${photo.data}" alt="Foto aktual ${name}">`
+        : '<div class="body-evidence-empty">Belum ada foto aktual</div>'}</div>
+      <div class="body-evidence-time">${photo ? escapeHtml(photo.timestampText || 'Waktu tidak tersedia') : '—'}</div>
+    </div>`;
+  }).join('');
   return `
-    <div class="meta-head"><div><h1>Checklist Unit Pendingin - Pengetesan Bocor Body</h1><div class="subtitle">Repair Indoor</div></div><div class="tag">Leak Test / Manifold</div></div>
-    <table class="info-inline">
-      <tr><td>Technician</td><td>${escapeHtml(info.technician)}</td><td>Claim Symptom</td><td>${escapeHtml(info.claimSymptom)}</td></tr>
-      <tr><td>Model</td><td>${escapeHtml(info.model)}</td><td>Location</td><td>${escapeHtml(info.lokasi)}</td></tr>
-      <tr><td>Type</td><td>${escapeHtml(info.jenisUnit)}</td><td>Tanggal Pengecekan</td><td>${formatDate(info.tanggalPengecekan)}</td></tr>
-      <tr><td>Serial Number</td><td>${escapeHtml(info.serialNumber)}</td><td>Waktu</td><td>Start ${escapeHtml(info.startTime)} · End ${escapeHtml(info.endTime)}</td></tr>
-    </table>
-    <div class="two-col">
-      <div>
-        <div class="procedure">
-          <h3>Leak Test Procedure (Manifold)</h3>
+    <div class="body-output">
+      <header class="body-output-head">
+        <div class="body-output-eyebrow">TECHNICAL SUPPORT / REPAIR INDOOR</div>
+        <h1>CHECKLIST PENGETESAN BOCOR BODY</h1>
+        <div class="body-output-subtitle">UNIT PENDINGIN · LEAK TEST MANIFOLD</div>
+      </header>
+      <div class="body-output-label">INFORMASI PEKERJAAN</div>
+      <table class="body-output-info">
+        <tbody>
+          <tr><th>TEKNISI</th><td>${val(info.technician)}</td><th>KELUHAN</th><td>${val(info.claimSymptom)}</td></tr>
+          <tr><th>MODEL</th><td>${val(info.model)}</td><th>LOKASI</th><td>${val(info.lokasi)}</td></tr>
+          <tr><th>TIPE</th><td>${val(info.jenisUnit)}</td><th>TANGGAL</th><td>${formatDate(info.tanggalPengecekan)}</td></tr>
+          <tr><th>SERIAL NUMBER</th><td>${val(info.serialNumber)}</td><th>WAKTU</th><td>${val(info.startTime)} – ${val(info.endTime)}</td></tr>
+        </tbody>
+      </table>
+      <div class="body-output-label">DOKUMENTASI FOTO AKTUAL</div>
+      <div class="body-evidence-grid">${photoCards}</div>
+      <div class="body-output-bottom">
+        <div class="body-results-panel">
+          <div class="body-output-label">HASIL PENGUJIAN</div>
+          <table class="body-results-table">
+            <tbody>
+              <tr><th>Tekanan awal</th><td>${psi(bb.tekananAwal)}</td><th>Penanda</th><td>${val(bb.penandaTerpasang)}</td></tr>
+              <tr><th>1 Jam</th><td>${psi(bb.tekanan1Jam)}</td><th>3 Jam</th><td>${psi(bb.tekanan3Jam)}</td></tr>
+              <tr><th>12 Jam (opsional)</th><td>${psi(bb.tekanan12Jam)}</td><th>1 Malam</th><td>${psi(bb.tekanan1Malam)}</td></tr>
+              <tr><th>Kesimpulan</th><td colspan="3"><strong>${val(bb.hasil)}</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="body-comment-box">
+            <div class="body-comment-title">OBSERVASI / CATATAN</div>
+            <div class="body-comment-content">${val([bb.observasi, bb.catatan].filter(Boolean).join('\n'))}</div>
+          </div>
+        </div>
+        <div class="body-reference-panel">
+          <div class="body-output-label">PROSEDUR & REFERENSI</div>
+          <img class="body-reference-img" src="${REF_IMAGE}" alt="Referensi foto manifold 1 jam 3 jam 12 jam">
           <ol>
             <li>Hubungkan manifold ke jalur evaporator/kondensor.</li>
-            <li>Berikan tekanan (kompresor / nitrogen) hingga 300–400 psi.</li>
-            <li>Tutup valve setelah tekanan tercapai.</li>
-            <li>Tandai posisi jarum (isolasi/marker).</li>
-            <li>Amati penurunan tekanan pada 1 jam, 3 jam, dan minimal 12 jam bila perlu.</li>
-            <li>Bandingkan posisi jarum dengan penanda awal.</li>
+            <li>Beri tekanan sesuai prosedur: 300–400 psi.</li>
+            <li>Tutup valve dan tandai posisi jarum.</li>
+            <li>Amati 1 jam, 3 jam, dan 12 jam bila diperlukan.</li>
+            <li>Bandingkan dengan penanda awal.</li>
           </ol>
         </div>
-        <div class="panel mt-2">
-          <h3>Foto Referensi</h3>
-          <img src="${REF_IMAGE}" alt="Referensi manifold 1 jam 3 jam 12 jam" style="width:100%;display:block;border:1px solid #444;">
-          <div class="ref-cap">Referensi pembacaan tekanan: 1 jam · 3 jam · 12 jam.</div>
-        </div>
       </div>
-      <div>
-        <h3 style="font-size:14px;font-weight:bold;margin:0 0 5px">Observasi · Foto Aktual</h3>
-        <div class="paper-stage-photos">${['1 Jam','3 Jam','12 Jam'].map((name,i)=>{
-           const photo=(bb.photos||[])[i];
-           return `<div class="paper-stage-photo"><div class="label">${name}</div>${photo?.data ? `<img src="${photo.data}" alt="Foto ${name}">` : '<div class="empty">Foto belum diupload</div>'}<div class="meta">${photo ? escapeHtml(photo.timestampText):'—'}</div></div>`;
-        }).join('')}</div>
-        <table class="body-table">
-          <tr><th colspan="2">Checklist</th></tr>
-          <tr><td>Tekanan awal</td><td>${escapeHtml(bb.tekananAwal)} psi</td></tr>
-          <tr><td>Penanda sudah dipasang</td><td>${escapeHtml(bb.penandaTerpasang)}</td></tr>
-          <tr><td>Tekanan 1 jam</td><td>${escapeHtml(bb.tekanan1Jam)} psi</td></tr>
-          <tr><td>Tekanan 3 jam</td><td>${escapeHtml(bb.tekanan3Jam)} psi</td></tr>
-          <tr><td>Tekanan min. 12 jam (jika perlu)</td><td>${escapeHtml(bb.tekanan12Jam)} psi</td></tr>
-          <tr><td>Tekanan 1 malam</td><td>${escapeHtml(bb.tekanan1Malam)} psi</td></tr>
-          <tr><td>Observasi</td><td>${escapeHtml(bb.observasi)}</td></tr>
-          <tr><td>Hasil</td><td class="result-pill">${escapeHtml(bb.hasil)}</td></tr>
-          <tr><td>Catatan Tambahan</td><td style="min-height:88px">${escapeHtml(bb.catatan)}</td></tr>
-        </table>
-      </div>
-    </div>
-    <div class="footer-note">Technical Support · Repair Indoor</div>`;
+      <div class="body-output-footer">REPAIR INDOOR · UNIT PENDINGIN <span>TECHNICAL SUPPORT</span></div>
+    </div>`;
 }
 function renderPreview() {
   const area = el('#printArea');
@@ -643,8 +696,8 @@ function fitDocumentSquare(){
  const content=paper?.querySelector('.output-content');
  if(!content)return;
  content.style.transform='none';
- const available=1228;
- const naturalWidth=Math.max(content.scrollWidth,1228);
+ const available=1200;
+ const naturalWidth=Math.max(content.scrollWidth,1200);
  const naturalHeight=content.scrollHeight;
  const scale=state.formType==='general' ? 1 : Math.min(1,available/naturalWidth,available/Math.max(1,naturalHeight));
  content.style.transform=`scale(${scale})`;
