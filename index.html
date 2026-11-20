@@ -231,6 +231,33 @@
       .choice .icon { margin-bottom:10px; }
     }
 
+  </style>
+<style id="standar-ui-v1">
+/* ===== STANDAR UI BERSAMA MODENA TS v1 (2026-W47) =====
+   Blok ini IDENTIK di Form Service Result, Checklist Unit Pendingin, dan Persetujuan Pemasangan.
+   Hanya tampilan. Tidak menyentuh area output (.paper / #outputFrame / #printArea). */
+:root{
+  --ui-ink:#1f2430; --ui-muted:#667085; --ui-line:#e4e7ec; --ui-bg:#f6f7fb; --ui-card:#fff; --ui-field:#d0d5dd;
+  --ui-primary:#7c5cf0; --ui-primary-d:#5b3fd1; --ui-primary-soft:#f4f1ff; --ui-primary-line:#ddd5fb;
+  --ui-danger:#c4321c; --ui-danger-bg:#fff1ee; --ui-danger-line:#f3b9ae;
+  --ui-warn:#7a4a00; --ui-warn-bg:#fff3d6; --ui-warn-line:#d99a00;
+  --ui-info:#1e40af; --ui-info-bg:#e8f0ff; --ui-info-line:#7ea2f2;
+  --ui-ok:#198754; --ui-ok-bg:#e8f6ee; --ui-ok-line:#6fc69a;
+  --ui-font:Inter,"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --ui-r-card:10px; --ui-r-ctl:8px; --ui-r-tile:9px; --ui-r-pill:999px;
+  --ui-touch:44px; --ui-gap:12px;
+  --ui-focus:3px solid color-mix(in srgb, var(--ui-primary) 35%, transparent);
+}
+body{font-family:var(--ui-font)}
+button,input,select,textarea{font-family:inherit}
+:focus-visible{outline:var(--ui-focus);outline-offset:2px}
+input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]),select,textarea{border-radius:var(--ui-r-ctl);font-size:max(16px,1rem)}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition:none !important;animation:none !important;scroll-behavior:auto !important}
+}
+/* ===== akhir STANDAR UI BERSAMA v1 ===== */
+</style>
+  <style id="ui-override-2026-w47">
     /* ===== Penyeragaman UI ke standar bersama (2026-W47) — hanya tampilan, tidak menyentuh output (.paper) ===== */
     :root {
       --bg: #f6f7fb;
@@ -307,7 +334,31 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
     }
-  </style>
+  
+    /* ===== Penyeragaman ke blok standar-ui-v1 (komponen setara tampil sama di tiga app) ===== */
+    body { background: var(--ui-bg); color: var(--ui-ink); }
+    .top { padding: 10px max(16px, calc((100vw - 1120px) / 2 + 18px)); }
+    .brand { max-width: none; margin: 0; min-height: 44px; padding-left: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .brand > i { top: 5px; }
+    .brand small { font-size: .75rem; font-weight: 400; margin-top: 0; }
+    .page { padding-top: 22px; }
+    .landing-head h1, .hero h1 { font-size: 1.4rem; }
+    .section-title h2, #workspaceTitle { font-size: 1.1rem; }
+    input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]), select { min-height: 48px; }
+    .stepper { border: 0; gap: 4px; }
+    .step { flex-direction: row; gap: 8px; font-size: .8125rem; min-height: 44px; color: #586174; }
+    .step.active { color: var(--accent-dark); }
+    .step span { background: #dcdfe8; width: 22px; height: 22px; font-size: .75rem; }
+    .step.active span { background: var(--accent); color: #fff; }
+    .toolbar { border-radius: var(--ui-r-card); }
+    .btn-soft, .btn-primary2, .btn-danger2 { padding: 10px 16px; font-size: .9375rem; }
+    .btn-danger2 { color: var(--ui-danger); border-color: var(--ui-danger-line); }
+    .btn-danger2:hover { background: var(--ui-danger-bg); }
+    @media (max-width: 700px) {
+      .step { font-size: .8125rem; min-height: 44px; }
+      .toolbar { border-radius: var(--ui-r-card) var(--ui-r-card) 0 0; }
+    }
+</style>
 </head>
 <body>
   <header class="top">
