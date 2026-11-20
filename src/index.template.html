@@ -230,6 +230,83 @@
       .choice { min-height:0; padding:18px; }
       .choice .icon { margin-bottom:10px; }
     }
+
+    /* ===== Penyeragaman UI ke standar bersama (2026-W47) — hanya tampilan, tidak menyentuh output (.paper) ===== */
+    :root {
+      --bg: #f6f7fb;
+      --ink: #1f2430;
+      --accent: #7c5cf0;
+      --accent-dark: #5b3fd1;
+      --accent-soft: #f4f1ff;
+      --accent-line: #ddd5fb;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --field-line: #d0d5dd;
+      --focus-ring: rgba(124, 92, 240, .35);
+      --card-shadow: none;
+    }
+    body { font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif; line-height: 1.5; font-size: 15px; }
+    button, input, select, textarea { font-family: inherit; }
+    button { font-size: 15px; line-height: 1.4; }
+    .top { background: #fff; color: var(--ink); border-bottom: 1px solid var(--line); padding: 12px 16px; }
+    .brand { position: relative; max-width: 1088px; padding-left: 46px; min-height: 34px; font-size: 1rem; font-weight: 700; letter-spacing: 0; line-height: 1.3; }
+    .brand > i { position: absolute; left: 0; top: 0; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 9px; background: var(--accent); color: #fff; font-size: 1rem; }
+    .brand small { color: var(--muted); font-size: .8125rem; margin-top: 1px; }
+    .page { max-width: 1120px; padding-left: 16px; padding-right: 16px; }
+    .hero, .card-shell, .preview-shell { border: 1px solid var(--line); border-radius: 10px; box-shadow: none; }
+    .hero-note, .hint-box { border: 1px solid var(--line); border-radius: 10px; }
+    .hero p, .landing-head p, .muted, .status-text, .row-meta, .photo-card small, .choice span { color: var(--muted); }
+    .hint-box ol { color: var(--muted); }
+    .eyebrow { font-size: .75rem; font-weight: 700; color: var(--accent-dark); }
+    .landing-head h1, .hero h1 { font-weight: 700; font-size: clamp(1.4rem, 4vw, 1.4rem); }
+    .section-title h2, #workspaceTitle { font-size: 1.1rem; font-weight: 700; }
+    .pill { background: var(--accent-soft); color: var(--accent-dark); font-weight: 600; font-size: .8125rem; }
+    .choice { border: 1px solid var(--line); border-top: 1px solid var(--line); border-radius: 10px; box-shadow: none; transition: border-color .15s ease, background-color .15s ease; }
+    .choice:hover { transform: none; border-color: var(--accent); box-shadow: none; background: var(--accent-soft); }
+    .choice .icon { border-radius: 9px; }
+    .choice strong { font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .choice span { font-size: .875rem; }
+    .choice-link { color: var(--accent-dark); font-size: .875rem; font-weight: 600; min-height: 44px; }
+    .field label { font-size: .875rem; font-weight: 600; }
+    input, textarea, select { min-height: 44px; border: 1px solid var(--field-line); border-radius: 8px; font-size: 16px; }
+    textarea { min-height: 90px; }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+    input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+    .check-accordion details { border: 1px solid var(--line); border-radius: 10px; }
+    .check-accordion summary { background: #fff; border-bottom: 1px solid var(--line); font-weight: 700; min-height: 44px; }
+    .row-item { border-top: 1px solid var(--line); }
+    .reference-image { border-radius: 10px; border: 1px solid var(--line); }
+    .stepper { background: #eef0f5; border: 1px solid #eef0f5; border-radius: 9px; padding: 4px; gap: 4px; }
+    .step { min-height: 44px; border-radius: 9px; font-weight: 600; font-size: .875rem; color: var(--muted); }
+    .step span { background: #d0d5dd; color: var(--ink); font-weight: 600; }
+    .step.active { background: #fff; color: var(--accent-dark); box-shadow: none; }
+    .step.active span { background: var(--accent); color: #fff; }
+    .toolbar { border: 1px solid var(--line); border-radius: 10px; background: #fff; box-shadow: none; backdrop-filter: none; }
+    .btn-soft, .btn-primary2, .btn-danger2 { font-family: inherit; font-size: .9375rem; font-weight: 600; border: 1px solid var(--field-line); border-radius: 8px; min-height: 44px; color: var(--ink); line-height: 1.3; transition: background-color .15s ease, border-color .15s ease; }
+    .btn-soft:hover { background: var(--accent-soft); border-color: var(--accent-line); }
+    .btn-primary2 { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn-primary2:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-danger2 { color: #c4321c; border-color: #f3b9ae; background: #fff; }
+    .btn-danger2:hover { background: #fff1ee; }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+    .photo-card { border: 1px solid var(--line); border-radius: 10px; }
+    .photo-card .photo-preview { border: 1px dashed var(--field-line); border-radius: 8px; }
+    .photo-card .photo-preview i { color: #98a2b3; }
+    .photo-card input[type=file] { font-size: 1rem; }
+    .photo-card .btn-soft { min-height: 44px; }
+    .photo-stage { font-size: .875rem; }
+    @media (max-width: 700px) {
+      .card-shell { border-radius: 10px; padding: 16px; }
+      .hero { padding: 16px; }
+      .step { font-size: .75rem; min-height: 56px; }
+      .toolbar { border-radius: 10px 10px 0 0; border-width: 1px 0 0; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); }
+      .page { padding-bottom: 112px; }
+      .preview-tools .actions button, .toolbar .actions button { min-height: 44px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body>
