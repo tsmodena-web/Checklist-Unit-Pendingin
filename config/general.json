@@ -1,0 +1,38 @@
+[
+  {
+    "id": "GENERAL CEK",
+    "title": "GENERAL CEK",
+    "rows": [
+      {"id": "0", "name": "Tegangan Input", "rec": "200 - 230", "unit": "VAC"},
+      {"id": "1", "name": "Arus Kompresor", "rec": "Rating label unit ±0.3 (______A)", "unit": "A", "units": ["refrigerator", "cooler", "freezer"]},
+      {"id": "2", "name": "Suhu Ambient/Lingkungan", "rec": "16 - 43", "unit": "°C"},
+      {"id": "3", "name": "Tes Press. Kondensor", "rec": "Tidak ada kebocoran", "unit": "-", "units": ["refrigerator", "cooler", "freezer"]},
+      {"id": "4", "name": "Tes Press. Evaporator", "rec": "Tidak ada kebocoran", "unit": "-", "units": ["refrigerator", "cooler", "freezer"]}
+    ]
+  },
+  {
+    "id": "REFRIGERATOR / COOLER / FREEZER",
+    "title": "REFRIGERATOR / COOLER / FREEZER",
+    "units": ["refrigerator","cooler","freezer"],
+    "rows": [
+      {"id": "0", "name": "Suhu Ruang Freezer", "rec": "< -15", "unit": "°C", "units": ["refrigerator", "freezer"]},
+      {"id": "1", "name": "Suhu Ruang Cooler", "rec": "0 - 7", "unit": "°C", "units": ["refrigerator", "cooler"]},
+      {"id": "2", "name": "Kipas Evaporator (Optional)", "rec": "Menyala (ON)", "unit": "-"},
+      {"id": "3", "name": "Kipas Kondensor (Optional)", "rec": "Menyala", "unit": "-"},
+      {"id": "4", "name": "Lampu (Optional)", "rec": "Menyala", "unit": "-"},
+      {"id": "5", "name": "Karet Pintu", "rec": "Rapat dengan body ketika ditutup", "unit": "-"},
+      {"id": "6", "name": "Heater Defrost & Thermofuse (Optional)", "rec": "Rating label unit ±30 (______W)", "unit": "W"}
+    ]
+  },
+  {
+    "id": "WATER DISPENSER / PURIFIER",
+    "title": "WATER DISPENSER / PURIFIER",
+    "units": ["dispenser","purifier"],
+    "rows": [
+      {"id": "0", "name": "Fungsi Tombol (Panas, Dingin, Normal)", "rec": "Berfungsi, tidak bocor", "unit": "-"},
+      {"id": "1", "name": "Suhu Air Dingin", "rec": "≤ 15", "unit": "°C"},
+      {"id": "2", "name": "Suhu Air Panas", "rec": "≥ 85", "unit": "°C"},
+      {"id": "3", "name": "Amper Pemanas", "rec": "Rating label unit ±0.3 (______A)", "unit": "A"}
+    ]
+  }
+]

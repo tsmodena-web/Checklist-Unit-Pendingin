@@ -1,0 +1,7 @@
+[
+  {"id": "refrigerator", "label": "Refrigerator"},
+  {"id": "cooler", "label": "Cooler"},
+  {"id": "freezer", "label": "Freezer"},
+  {"id": "dispenser", "label": "Water Dispenser"},
+  {"id": "purifier", "label": "Water Purifier"}
+]

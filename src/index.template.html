@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Repair Indoor · Checklist Unit Pendingin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    :root {
+      --bg: #f5f7fa;
+      --ink: #263a4c;
+      --accent: #0d6efd;
+      --accent-dark: #0a4fb3;
+      --accent-soft: #eaf3ff;
+      --card-shadow: 0 8px 30px rgba(13, 53, 84, .08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .top { background: linear-gradient(110deg,#102d43,#0a4b86); color: #fff; padding: 16px 20px; }
+    .brand { max-width: 1100px; margin: 0 auto; font-size: 1.08rem; font-weight: 800; letter-spacing: .02em; }
+    .brand small { display: block; font-weight: 400; color: #d5e7f4; margin-top: 4px; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 24px 18px 96px; }
+    .hero, .card-shell, .preview-shell { background: #fff; border: 1px solid #dce6ef; border-radius: 20px; box-shadow: var(--card-shadow); }
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; padding: 26px; margin-bottom: 18px; }
+    .hero h1 { margin: 8px 0 8px; font-size: clamp(1.55rem, 4vw, 2.15rem); }
+    .hero p { margin: 0; color: #4f6477; }
+    .eyebrow { display: inline-block; color: var(--accent-dark); font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+    .hero-note { border: 1px solid #dce6ef; border-radius: 14px; background: #fbfdff; padding: 15px 16px; color: #496071; font-size: .92rem; }
+    .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .choice { border: 1px solid #d5e1ec; border-top: 4px solid var(--accent); border-radius: 18px; background: #fff; padding: 22px; box-shadow: 0 6px 28px rgba(13,53,84,.06); text-align: left; cursor: pointer; transition: .18s ease; }
+    .choice:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 10px 34px rgba(13,53,84,.14); background: #f9fbff; }
+    .choice .icon { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; font-size: 1.35rem; color: var(--accent); background: var(--accent-soft); margin-bottom: 14px; }
+    .choice strong { display: block; font-size: 1.08rem; margin-bottom: 6px; }
+    .choice span { display: block; color: #52687b; font-size: .9rem; line-height: 1.45; }
+    .section { margin-top: 18px; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .section-title h2 { margin: 0; font-size: 1.18rem; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 8px 14px; background: var(--accent-soft); color: var(--accent-dark); font-size: .82rem; font-weight: 800; }
+    .card-shell { padding: 22px; margin-top: 16px; }
+    .muted { color: #597082; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .field { display: block; }
+    .field label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 7px; }
+    input, textarea, select { width: 100%; min-height: 46px; border: 1px solid #bfcdda; border-radius: 12px; padding: 10px 12px; font: inherit; color: inherit; background: #fff; }
+    textarea { min-height: 90px; resize: vertical; }
+    input:focus, textarea:focus, select:focus { outline: 2px solid rgba(13,110,253,.25); border-color: var(--accent); }
+    .check-accordion details { border: 1px solid #dce6ef; border-radius: 16px; overflow: hidden; background: #fff; margin-bottom: 12px; }
+    .check-accordion summary { list-style: none; cursor: pointer; font-weight: 800; padding: 16px 18px; background: #f7fbff; border-bottom: 1px solid #e6eef5; }
+    .check-accordion summary::-webkit-details-marker { display:none; }
+    .row-item { padding: 16px 18px; border-top: 1px solid #eef3f7; }
+    .row-item:first-child { border-top: 0; }
+    .row-meta { color:#607586; font-size:.86rem; }
+    .row-inputs { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin-top: 12px; }
+    .hint-box { border: 1px solid #dce6ef; border-radius: 14px; background: #fbfdff; padding: 14px 16px; }
+    .hint-box h3 { margin: 0 0 8px; font-size: 1rem; }
+    .hint-box ol { margin: 0; padding-left: 18px; color: #4f6477; }
+    .body-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .reference-image { width: 100%; border-radius: 14px; border: 1px solid #dce6ef; background: #fff; }
+    .stepper { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; padding: 6px; background:#edf3f8; border:1px solid #dce6ef; border-radius: 14px; margin-bottom: 18px; }
+    .step { min-height: 48px; border-radius: 10px; display:flex; align-items:center; justify-content:center; gap: 8px; font-weight: 800; color: #617384; }
+    .step span { width: 24px; height: 24px; border-radius: 50%; display:grid; place-items:center; font-size:.75rem; background:#c9d8e4; color:#21435b; }
+    .step.active { background:#fff; color:var(--accent-dark); box-shadow: 0 2px 8px rgba(23,48,75,.12); }
+    .step.active span { background: var(--accent); color:#fff; }
+    .toolbar { position: sticky; bottom: 12px; z-index: 20; display:flex; flex-wrap:wrap; gap: 10px; align-items:center; justify-content:space-between; padding: 12px; border:1px solid #dce6ef; border-radius: 16px; background: rgba(255,255,255,.94); box-shadow: 0 8px 35px rgba(14,54,80,.15); backdrop-filter: blur(10px); margin-top: 18px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .btn-soft, .btn-primary2, .btn-danger2 { border: 1px solid #bfd0df; border-radius: 11px; padding: 10px 16px; min-height: 44px; background: #fff; color: #17415e; font-weight: 700; cursor:pointer; }
+    .btn-primary2 { background: var(--accent); color:#fff; border-color: var(--accent); }
+    .btn-primary2:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+    .btn-danger2 { color:#9c3030; border-color:#e3b2ba; }
+    [hidden] { display:none !important; }
+    .preview-shell { padding: 18px; }
+    .preview-tools { display:flex; flex-wrap:wrap; gap: 10px; align-items:center; justify-content:space-between; margin-bottom: 14px; }
+    .preview-frame { background:#eef3f7; border:1px solid #d7e0e8; border-radius: 18px; padding: 18px; overflow:auto; }
+    .paper { background:#fff; color:#111; margin:0 auto; box-shadow:0 2px 16px rgba(24,57,83,.12); }
+    .paper-general { width: 930px; padding: 28px 26px; font: 12px/1.35 Arial, sans-serif; }
+    .paper-body { width: 1280px; min-height: 1000px; padding: 26px; font: 12px/1.35 Arial, sans-serif; }
+    .paper h1 { margin:0 0 10px; text-align:center; font: bold 20px/1.2 Arial, sans-serif; }
+    .paper .subtitle { text-align:center; font-size: 11px; margin: -2px 0 14px; color: #444; }
+    .paper table { width:100%; border-collapse:collapse; table-layout:fixed; }
+    .paper th, .paper td { border:1px solid #444; padding: 6px 7px; vertical-align: top; word-wrap: break-word; }
+    .paper th { background:#e9f1f5; }
+    .paper .group-row td { background:#f4f8fb; font-weight:700; }
+    .paper .center { text-align:center; }
+    .paper .small { font-size: 11px; }
+    .paper .info-inline { width:100%; margin-bottom: 12px; }
+    .paper .info-inline td:nth-child(1), .paper .info-inline td:nth-child(3) { width: 16%; font-weight: 700; background: #fbfdff; }
+    .paper .info-inline td:nth-child(2), .paper .info-inline td:nth-child(4) { width: 34%; }
+    .paper .note-box { min-height: 78px; }
+    .paper .meta-head { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom: 12px; }
+    .paper .tag { display:inline-block; padding:5px 10px; border-radius:999px; background:#eef5ff; color:#124f9f; font-size:11px; font-weight:700; }
+    .paper .two-col { display:grid; grid-template-columns: 0.95fr 1.25fr; gap: 16px; align-items:start; }
+    .paper .procedure { border:1px solid #444; padding: 12px 14px; min-height: 100%; }
+    .paper .procedure h3, .paper .panel h3 { margin:0 0 8px; font: bold 13px/1.2 Arial, sans-serif; }
+    .paper .procedure ol { margin:0; padding-left: 18px; }
+    .paper .panel { border:1px solid #444; padding: 10px; }
+    .paper .ref-cap { margin:6px 0 0; font-size: 11px; color: #444; }
+    .paper .body-table td:first-child { width: 42%; font-weight: 700; background: #fbfdff; }
+    .paper .result-pill { font-weight:700; }
+    .paper .footer-note { margin-top:10px; font-size:10px; color:#555; }
+    .status-text { font-size:.88rem; color:#597082; }
+    @media (max-width: 900px) {
+      .hero, .choice-grid, .field-grid, .body-layout { grid-template-columns: 1fr; }
+      .page { padding: 18px 14px 96px; }
+      .preview-frame { padding: 10px; }
+      .paper-general, .paper-body { width: 100%; min-width: 760px; }
+    }
+    @media print {
+      body { background:#fff; }
+      .top, #landing, .toolbar, .preview-tools, .preview-label { display:none !important; }
+      #workspace { display:block !important; padding:0; margin:0; }
+      .preview-shell, .preview-frame { padding:0; border:0; background:#fff; box-shadow:none; overflow:visible; }
+      .paper { box-shadow:none; margin:0; }
+    }
+
+
+/* Output General: komposisi satu lembar 1:1 yang memanfaatkan seluruh halaman. */
+.paper.paper-general .output-content{top:40px;left:40px;width:1200px;height:1200px}
+.paper.paper-general .general-document{width:1200px;height:1200px;padding:38px 42px 34px;box-sizing:border-box;display:flex;flex-direction:column;font:17px/1.33 Arial,Helvetica,sans-serif;color:#1b2935}
+.paper.paper-general .general-document-head{text-align:center;border-bottom:3px solid #173d58;padding-bottom:15px;margin-bottom:20px}
+.paper.paper-general .general-document-eyebrow{font:bold 13px/1.25 Arial,sans-serif;color:#48677e;letter-spacing:1.7px;margin-bottom:10px}
+.paper.paper-general .general-document-head h1{font:bold 31px/1.2 Arial,sans-serif;color:#132b3e;margin:0 0 9px}
+.paper.paper-general .general-document-type{font:bold 15px/1.2 Arial,sans-serif;color:#315872;letter-spacing:1px}
+.paper.paper-general .general-document-section-label{font:bold 14px/1.3 Arial,sans-serif;letter-spacing:.8px;color:#173d58;margin:0 0 8px}
+.paper.paper-general table{margin:0!important;table-layout:fixed;width:100%;border-collapse:collapse}
+.paper.paper-general table th,.paper.paper-general table td{border:1px solid #9bacb8;padding:9px 11px;vertical-align:middle;white-space:normal;overflow-wrap:anywhere}
+.paper.paper-general .general-info{margin-bottom:18px!important}
+.paper.paper-general .general-info td{height:51px;font-size:16px;border-color:#b2c1cb}
+.paper.paper-general .general-info td:nth-child(odd){width:15%!important;color:#355269;font-weight:700;background:#edf3f7}
+.paper.paper-general .general-info td:nth-child(even){width:35%!important;font-weight:600}
+.paper.paper-general .general-results thead th{height:65px;background:#dfeaf1;color:#173d58;line-height:1.35;font-size:14px;font-weight:700;letter-spacing:.2px}
+.paper.paper-general .general-results .general-date{display:block;margin-top:6px;font-size:13px;font-weight:500;letter-spacing:0;color:#344f62}
+.paper.paper-general .general-results tbody .group-row td{background:#edf3f7;font:bold 14px/1.3 Arial,sans-serif;color:#173d58;height:43px;letter-spacing:.2px;padding:8px 11px}
+.paper.paper-general .general-results tbody .parameter-row td{height:var(--parameter-height);font-size:16px;line-height:1.35}
+.paper.paper-general .general-results tbody .parameter-row td:nth-child(1){font-weight:600}
+.paper.paper-general .general-results tbody .parameter-row td:nth-child(3){color:#526575}
+.paper.paper-general .general-part-block{margin-top:16px;flex:0 0 auto;display:flex;flex-direction:column}
+.paper.paper-general .general-part-box{border:1.5px solid #9bacb8;background:#fff;display:flex;flex-direction:column}
+.paper.paper-general .general-part-box-title{padding:10px 14px;border-bottom:1px solid #9bacb8;background:#edf3f7;font:bold 14px/1.3 Arial,sans-serif;letter-spacing:.8px;color:#173d58}
+.paper.paper-general .general-part-content{padding:14px 16px;height:var(--note-height,140px);font-size:var(--note-font-size,16px);line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;display:block}
+.paper.paper-general .general-document-footer{display:flex;justify-content:space-between;margin-top:12px;border-top:1px solid #c9d4de;padding-top:10px;color:#64798a;font:12px/1.3 Arial,sans-serif;letter-spacing:.7px}
+
+/* Semua hasil pemeriksaan menggunakan kanvas persegi 1280 × 1280. */
+.paper.paper-general,.paper.paper-body{position:relative!important;width:1280px!important;height:1280px!important;min-width:1280px!important;min-height:1280px!important;max-height:1280px!important;padding:0!important;overflow:hidden!important;box-sizing:border-box!important}
+.paper .output-content{position:absolute;top:40px;left:40px;width:1200px;height:1200px;transform-origin:top left;box-sizing:border-box}
+@media print{
+ @page{size:1280px 1280px;margin:0}
+ .paper.paper-general,.paper.paper-body{width:1280px!important;height:1280px!important;min-width:1280px!important}
+}
+
+/* Output Bocor Body: foto aktual memenuhi bidang utama dokumen 1:1. */
+.paper.paper-body .body-output{width:1200px;min-height:1200px;padding:26px 30px 22px;display:flex;flex-direction:column;box-sizing:border-box;font:15px/1.35 Arial,Helvetica,sans-serif;color:#192c3a}
+.paper.paper-body .body-output-head{text-align:center;border-bottom:3px solid #173d58;padding-bottom:13px;margin-bottom:15px}
+.paper.paper-body .body-output-eyebrow{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#537084;margin-bottom:6px}
+.paper.paper-body .body-output-head h1{font:bold 26px/1.15 Arial,sans-serif;color:#132b3e;margin:0 0 6px}
+.paper.paper-body .body-output-subtitle{font-size:13px;font-weight:700;letter-spacing:.8px;color:#315872}
+.paper.paper-body .body-output-label{font:bold 13px/1.25 Arial,sans-serif;color:#173d58;letter-spacing:.7px;margin:0 0 8px}
+.paper.paper-body .body-output-info{width:100%;border-collapse:collapse;table-layout:fixed;margin:0 0 17px}
+.paper.paper-body .body-output-info th,.paper.paper-body .body-output-info td{border:1px solid #adbdc9;padding:8px 10px;font-size:13px;overflow-wrap:anywhere;text-align:left}
+.paper.paper-body .body-output-info th{width:16%;background:#edf3f7;color:#38576a}
+.paper.paper-body .body-output-info td{width:34%}
+.paper.paper-body .body-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:19px}
+.paper.paper-body .body-evidence-card{min-width:0;border:1.5px solid #9bacb8;display:flex;flex-direction:column;background:#fff}
+.paper.paper-body .body-evidence-heading{background:#e3edf4;color:#183a53;text-align:center;font:bold 13px/1.3 Arial,sans-serif;padding:9px}
+.paper.paper-body .body-evidence-image{height:330px;min-height:0;display:grid;place-items:center;background:#f5f7f9;overflow:hidden}
+.paper.paper-body .body-evidence-image img{width:100%;height:100%;object-fit:contain;display:block}
+.paper.paper-body .body-evidence-empty{color:#788a98;font-size:14px}
+.paper.paper-body .body-evidence-time{border-top:1px solid #c5d1d9;min-height:40px;padding:8px;text-align:center;font-size:11px;color:#3b5669;overflow-wrap:anywhere}
+.paper.paper-body .body-output-bottom{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:16px;align-items:start}
+.paper.paper-body .body-results-table{border-collapse:collapse;width:100%;table-layout:fixed;margin:0 0 10px}
+.paper.paper-body .body-results-table td,.paper.paper-body .body-results-table th{border:1px solid #aabcc9;padding:9px 10px;font-size:13px;text-align:left;overflow-wrap:anywhere}
+.paper.paper-body .body-results-table th{width:24%;background:#edf3f7;color:#315166}
+.paper.paper-body .body-comment-box{border:1.5px solid #9bacb8}
+.paper.paper-body .body-comment-title{background:#edf3f7;border-bottom:1px solid #9bacb8;padding:9px 11px;font:bold 12px Arial,sans-serif;color:#173d58}
+.paper.paper-body .body-comment-content{padding:11px;min-height:100px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.42;font-size:13px}
+.paper.paper-body .body-reference-panel{min-width:0}
+.paper.paper-body .body-reference-img{width:100%;height:155px;object-fit:contain;display:block;border:1px solid #aabcc9;background:#fff}
+.paper.paper-body .body-reference-panel ol{margin:9px 0 0;padding-left:19px;font-size:12px;line-height:1.44}
+.paper.paper-body .body-output-footer{display:flex;justify-content:space-between;gap:12px;border-top:1px solid #c9d4de;padding-top:10px;margin-top:auto;font-size:11px;letter-spacing:.5px;color:#64798a}
+
+/* Mobile-first photo evidence and export scale */
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.photo-card{border:1px solid #d7e3ed;border-radius:13px;padding:12px;background:#fff;min-width:0}
+.photo-card .photo-preview{aspect-ratio:4/3;background:#f2f6fa;border:1px dashed #bacbd9;border-radius:9px;display:grid;place-items:center;overflow:hidden;margin:8px 0}
+.photo-card .photo-preview img{width:100%;height:100%;object-fit:contain}
+.photo-card .photo-preview i{font-size:2rem;color:#9badbd}
+.photo-card input[type=file]{width:100%;font-size:.84rem;padding:7px;min-height:44px}
+.photo-card small{display:block;color:#5a7083;overflow-wrap:anywhere}
+.photo-card .btn-soft{width:100%;margin-top:8px;min-height:40px}
+.photo-stage{display:block;font-size:.9rem;margin-bottom:6px}
+#previewView .preview-frame{overflow:hidden}
+.paper-stage-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:8px 0}
+.paper-stage-photo{border:1px solid #444;min-width:0;text-align:center}
+.paper-stage-photo .label{font-size:10px;font-weight:700;background:#e9f1f5;padding:5px}
+.paper-stage-photo img{display:block;width:100%;height:120px;object-fit:contain;background:white}
+.paper-stage-photo .empty{display:grid;place-items:center;height:120px;color:#888;font-style:italic}
+.paper-stage-photo .meta{font-size:9px;padding:5px;min-height:30px;overflow-wrap:anywhere}
+.export-paper-outer{width:100%;overflow:hidden}
+.export-paper-scale{transform-origin:top left;will-change:transform}
+@media(max-width:700px){
+ .photo-grid{grid-template-columns:1fr}
+ .photo-card{padding:14px}
+ .photo-card .photo-preview{aspect-ratio:16/10}
+ .hero{padding:20px}
+ .card-shell{padding:15px;border-radius:15px}
+ .stepper{gap:3px;padding:4px}
+ .step{font-size:.72rem;flex-direction:column;gap:3px;min-height:56px}
+ .toolbar{position:fixed;bottom:0;left:0;right:0;margin:0;border-radius:14px 14px 0 0;padding:10px 14px max(10px,env(safe-area-inset-bottom))}
+ .toolbar .actions{flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .toolbar .actions button{min-width:0;padding:10px 5px}
+ .preview-tools{display:grid;grid-template-columns:1fr}
+ .preview-tools .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .preview-tools .actions button{padding:8px;min-width:0}
+ .row-inputs{gap:8px}
+ .row-inputs input{min-width:0}
+}
+
+
+    /* Landing: single-purpose navigation, no redundant category panel */
+    .landing-head { margin: 8px 0 24px; }
+    .landing-head h1 { margin: 7px 0 6px; font-size: clamp(1.65rem,4vw,2.1rem); font-weight: 750; }
+    .landing-head p { margin:0; color:#647789; font-size:.95rem; }
+    .choice { display:flex; flex-direction:column; min-height:198px; }
+    .choice strong { font-size:1.09rem; }
+    .choice-link { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:auto; padding-top:18px; color:#0a4fb3; font-size:.84rem; font-weight:750; }
+    .choice > span:not(.icon) { flex:0 0 auto; }
+    @media (max-width:600px) {
+      .landing-head { margin:4px 0 20px; }
+      .choice { min-height:0; padding:18px; }
+      .choice .icon { margin-bottom:10px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><i class="bi bi-tools"></i> Form Service Result
+      <small>Repair Indoor · Checklist Unit Pendingin</small>
+    </div>
+  </header>
+
+  <main id="landing" class="page">
+    <section class="landing-head">
+      <div class="eyebrow">REPAIR INDOOR</div>
+      <h1>Checklist Unit Pendingin</h1>
+      <p>Pilih form pemeriksaan.</p>
+    </section>
+    <section aria-label="Pilih form pemeriksaan">
+      <div class="choice-grid">
+        <button type="button" class="choice" data-form-choice="general">
+          <span class="icon"><i class="bi bi-clipboard2-check" aria-hidden="true"></i></span>
+          <strong>General Check</strong>
+          <span>Pemeriksaan awal dan akhir berdasarkan jenis unit.</span>
+          <div class="choice-link">Buka form <i class="bi bi-arrow-right"></i></div>
+        </button>
+        <button type="button" class="choice" data-form-choice="bocor_body">
+          <span class="icon"><i class="bi bi-moisture" aria-hidden="true"></i></span>
+          <strong>Pengetesan Bocor Body</strong>
+          <span>Uji tekanan manifold dan dokumentasi foto hasil observasi.</span>
+          <div class="choice-link">Buka form <i class="bi bi-arrow-right"></i></div>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <main id="workspace" class="page" hidden>
+    <div class="card-shell">
+      <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap mb-3">
+        <div>
+          <span class="eyebrow">REPAIR INDOOR</span>
+          <h2 id="workspaceTitle" class="mb-1">Form</h2>
+          <p id="workspaceDesc" class="muted mb-0"></p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn-soft" id="backHomeBtn"><i class="bi bi-arrow-left me-1"></i>Ganti Form</button>
+          <button class="btn-soft" id="saveDraftBtn"><i class="bi bi-floppy me-1"></i>Simpan Draft</button>
+          <button class="btn-danger2" id="resetDraftBtn"><i class="bi bi-trash3 me-1"></i>Reset</button>
+        </div>
+      </div>
+
+      <div class="stepper">
+        <div class="step" data-step-indicator="1"><span>1</span>Informasi</div>
+        <div class="step" data-step-indicator="2"><span>2</span>Checklist</div>
+        <div class="step" data-step-indicator="3"><span>3</span>Review</div>
+      </div>
+
+      <section id="editorInfo"></section>
+      <section id="editorChecklist" hidden></section>
+      <section id="editorReview" hidden>
+        <div class="preview-shell">
+          <div class="preview-tools">
+            <div>
+              <div class="preview-label"><strong>Preview Output</strong></div>
+              <div class="status-text">Pastikan isi form sudah sesuai sebelum mengunduh JPG.</div>
+            </div>
+            <div class="actions">
+              <button class="btn-soft" id="printBtn"><i class="bi bi-printer me-1"></i>Cetak</button>
+              <button class="btn-primary2" id="downloadJpgBtn"><i class="bi bi-image me-1"></i>Download JPG</button>
+            </div>
+          </div>
+          <div class="preview-frame">
+            <article id="printArea" class="paper"></article>
+          </div>
+        </div>
+      </section>
+
+      <div class="toolbar">
+        <div class="status-text" id="stepStatus">Langkah 1 dari 3</div>
+        <div class="actions">
+          <button class="btn-soft" id="prevBtn" hidden><i class="bi bi-arrow-left me-1"></i>Sebelumnya</button>
+          <button class="btn-primary2" id="nextBtn">Lanjut</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script>
+'use strict';
+const REF_IMAGE = /*@@REF_IMAGE@@*/;
+const GENERAL_GROUPS = /*@@GENERAL_GROUPS@@*/;
+const STORAGE_PREFIX = 'repair_indoor_pendingin_';
+
+const state = {
+  formType: null,
+  step: 1,
+  data: {}
+};
+
+function defaultData() {
+  return {
+    info: {
+      ron: '', unit: '', konsumen: '', technician: '', tanggalAwal: '', tanggalAkhir: '',
+      model: '', lokasi: '', serialNumber: '', claimSymptom: '', jenisUnit: '',
+      tanggalPengecekan: '', startTime: '', endTime: ''
+    },
+    general: {
+      unitType: '', partNote: '',
+      rows: Object.fromEntries(GENERAL_GROUPS.flatMap(g => g.rows.map(r => [g.id + '||' + r.id, { awal:'', akhir:'' }])))
+    },
+    bocorBody: {
+      tekananAwal: '', penandaTerpasang: 'Sudah', tekanan1Jam: '', tekanan3Jam: '', tekanan12Jam: '',
+      tekanan1Malam: '', hasil: '', observasi: '', catatan: '', photos: [null,null,null]
+    }
+  };
+}
+
+const el = (sel) => document.querySelector(sel);
+const els = (sel) => Array.from(document.querySelectorAll(sel));
+function cloneDefaults() { return JSON.parse(JSON.stringify(defaultData())); }
+function storageKey() { return state.formType ? STORAGE_PREFIX + state.formType : ''; }
+function saveDraft() { if (!state.formType)return; try {localStorage.setItem(storageKey(), JSON.stringify(state.data));}
+ catch(e) {console.warn('Draft could not be saved, photo size may exceed browser storage.',e);} }
+function loadDraft(type) { try { const raw = localStorage.getItem(STORAGE_PREFIX + type); return raw ? JSON.parse(raw) : null; } catch (e) { return null; } }
+
+function chooseForm(type) {
+  state.formType = type;
+  state.step = 1;
+  state.data = loadDraft(type) || cloneDefaults();
+  state.data.general ||= cloneDefaults().general;
+  state.data.general.unitType ||= '';
+  state.data.bocorBody ||= cloneDefaults().bocorBody;
+  state.data.bocorBody.photos ||= [null,null,null];
+  el('#landing').hidden = true;
+  el('#workspace').hidden = false;
+  renderAll();
+}
+function goHome() { el('#workspace').hidden = true; el('#landing').hidden = false; }
+function resetDraft() {
+  if (!state.formType) return;
+  if (!confirm('Hapus draft form ini?')) return;
+  localStorage.removeItem(storageKey());
+  state.data = cloneDefaults();
+  renderAll();
+}
+function formMeta() {
+  return state.formType === 'general'
+    ? { title: 'Checklist Unit Pendingin - General', desc: 'Pemeriksaan awal dan akhir berdasarkan jenis unit.' }
+    : { title: 'Checklist Unit Pendingin - Pengetesan Bocor Body', desc: 'Uji tekanan manifold dan foto observasi.' };
+}
+function renderAll() {
+  const meta = formMeta();
+  el('#workspaceTitle').textContent = meta.title;
+  el('#workspaceDesc').textContent = meta.desc;
+  els('[data-step-indicator]').forEach(node => node.classList.toggle('active', Number(node.dataset.stepIndicator) === state.step));
+  el('#stepStatus').textContent = 'Langkah ' + state.step + ' dari 3';
+  el('#prevBtn').hidden = state.step === 1;
+  el('#nextBtn').hidden = state.step === 3;
+  el('#editorInfo').hidden = state.step !== 1;
+  el('#editorChecklist').hidden = state.step !== 2;
+  el('#editorReview').hidden = state.step !== 3;
+  renderInfo();
+  renderChecklist();
+  if (state.step === 3) renderPreview();
+}
+function escapeHtml(val) { return String(val ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
+function formatDate(val) {
+  if (!val) return '________';
+  const d = new Date(val);
+  if (Number.isNaN(d.getTime())) return val;
+  return new Intl.DateTimeFormat('id-ID', { day:'2-digit', month:'2-digit', year:'numeric' }).format(d);
+}
+function labelledInput(label, key, value, type='text', placeholder='') {
+  return `<div class="field"><label for="${key}">${label}</label><input id="${key}" data-bind="${key}" type="${type}" value="${escapeHtml(value)}" placeholder="${escapeHtml(placeholder)}"></div>`;
+}
+function renderInfo() {
+  const info = state.data.info;
+  if (state.formType === 'general') {
+    el('#editorInfo').innerHTML = `
+      <div class="section-title"><div><h3 class="mb-1">Informasi Form</h3><div class="muted">Mengikuti struktur checklist general pada file Excel.</div></div></div>
+      <div class="field mb-3"><label for="generalType">Jenis Unit Pendingin</label>
+        <select id="generalType" data-bind="general.unitType">
+          <option value="" ${!state.data.general.unitType?'selected':''} disabled>-- Pilih jenis unit --</option>
+          ${UNIT_OPTIONS.map(([k,v])=>`<option value="${k}" ${state.data.general.unitType===k?'selected':''}>${v}</option>`).join('')}
+        </select>
+      </div>
+      <p class="muted small">Jenis unit yang dipilih menentukan parameter dan bentuk checklist di langkah berikutnya.</p>
+      <div class="field-grid">
+        ${labelledInput('RON', 'info.ron', info.ron, 'text', 'Contoh: RON202610080001')}
+        ${labelledInput('Unit / Model Unit', 'info.unit', info.unit, 'text', 'Contoh: RF 1234 ABC')}
+        ${labelledInput('Konsumen', 'info.konsumen', info.konsumen, 'text', 'Nama konsumen')}
+        ${labelledInput('Teknisi', 'info.technician', info.technician, 'text', 'Nama teknisi')}
+        ${labelledInput('Tanggal Awal', 'info.tanggalAwal', info.tanggalAwal, 'date')}
+        ${labelledInput('Tanggal Akhir', 'info.tanggalAkhir', info.tanggalAkhir, 'date')}
+      </div>`;
+  } else {
+    el('#editorInfo').innerHTML = `
+      <div class="section-title"><div><h3 class="mb-1">General Information</h3><div class="muted">Mengikuti susunan utama pada template Pengetesan Bocor Body.</div></div></div>
+      <div class="field-grid">
+        ${labelledInput('Technician', 'info.technician', info.technician)}
+        ${labelledInput('Claim Symptom', 'info.claimSymptom', info.claimSymptom, 'text', 'Keluhan singkat konsumen')}
+        ${labelledInput('Model', 'info.model', info.model)}
+        ${labelledInput('Location', 'info.lokasi', info.lokasi)}
+        ${labelledInput('Type', 'info.jenisUnit', info.jenisUnit, 'text', 'Contoh: Refrigerator / Cooler / Freezer')}
+        ${labelledInput('Tanggal Pengecekan', 'info.tanggalPengecekan', info.tanggalPengecekan, 'date')}
+        ${labelledInput('Serial Number', 'info.serialNumber', info.serialNumber)}
+        <div class="field-grid">
+          ${labelledInput('Start Time', 'info.startTime', info.startTime, 'time')}
+          ${labelledInput('End Time', 'info.endTime', info.endTime, 'time')}
+        </div>
+      </div>`;
+  }
+  bindInputs();
+}
+const UNIT_OPTIONS = /*@@UNIT_OPTIONS@@*/;
+function currentUnitLabel(){return UNIT_OPTIONS.find(x=>x[0]===state.data.general.unitType)?.[1] || 'Belum dipilih';}
+function applicableRows() {
+ const kind=state.data.general.unitType;
+ if(!kind) return [];
+ // Kunci data = id grup + '||' + id baris (dari config), sehingga urutan bisa diubah tanpa menggeser isian draft.
+ const fits=(units)=>!units||units.includes(kind);
+ return GENERAL_GROUPS.filter(g=>fits(g.units)).map(g=>[g.title,
+   g.rows.filter(r=>fits(r.units)).map(r=>({item:[r.name,r.rec,r.unit], key:g.id+'||'+r.id}))
+ ]).filter(([,items])=>items.length);
+}
+function photoCards() {
+ const names=['1 Jam','3 Jam','12 Jam (Jika Perlu)'];
+ return `<div class="photo-grid">${names.map((name,i)=>{
+   const photo=(state.data.bocorBody.photos||[])[i];
+   return `<div class="photo-card"><strong class="photo-stage">Foto Tekanan ${name}</strong>
+     <label for="evidence${i}">Ambil foto atau pilih dari galeri</label>
+     <input id="evidence${i}" data-photo-index="${i}" type="file" accept="image/*">
+     <div class="photo-preview">${photo?.data ? `<img src="${photo.data}" alt="Bukti tekanan ${name}">`:'<i class="bi bi-image"></i>'}</div>
+     <small>${photo ? escapeHtml(photo.timestampText) + ' · ' + Math.round(photo.bytes/1024) +' KB (compressed)' : 'Belum ada foto. Tanggal asli bergantung metadata EXIF.'}</small>
+     ${photo ? `<button type="button" class="btn-soft" data-remove-photo="${i}">Hapus Foto</button>`:''}
+   </div>`;
+ }).join('')}</div>`;
+}
+function renderChecklist() {
+  if (state.formType === 'general') {
+    const rowsHtml = applicableRows().map(([group, items], gidx) => `
+      <details open>
+        <summary>${group}</summary>
+        ${items.map(({item, key}) => {
+          const [name, rec, unit] = item;
+          const current = state.data.general.rows[key] || { awal:'', akhir:'' };
+          return `<div class="row-item">
+            <strong>${name}</strong>
+            <div class="row-meta">Rekomendasi: ${rec} · Unit: ${unit}</div>
+            <div class="row-inputs">
+              <div class="field"><label>Hasil Awal</label><input data-general-key="${key}" data-side="awal" value="${escapeHtml(current.awal || '')}" placeholder="Isi hasil awal"></div>
+              <div class="field"><label>Hasil Akhir</label><input data-general-key="${key}" data-side="akhir" value="${escapeHtml(current.akhir || '')}" placeholder="Isi hasil akhir"></div>
+            </div>
+          </div>`;
+        }).join('')}
+      </details>`).join('');
+    el('#editorChecklist').innerHTML = `
+      <div class="section-title"><div><h3 class="mb-1">Checklist ${escapeHtml(currentUnitLabel())}</h3><div class="muted">Parameter sesuai jenis unit yang dipilih. Isi hasil Awal dan Akhir.</div></div></div>
+      ${!state.data.general.unitType ? '<div class="hint-box">Pilih jenis unit pada langkah Informasi dahulu.</div>' : `<div class="check-accordion">${rowsHtml}</div>`}
+      <div class="field mt-3">
+        <label for="partNote">Catatan Pergantian Part</label>
+        <textarea id="partNote" data-bind="general.partNote" placeholder="Isi catatan pergantian part bila ada">${escapeHtml(state.data.general.partNote || '')}</textarea>
+      </div>`;
+  } else {
+    const bb = state.data.bocorBody;
+    el('#editorChecklist').innerHTML = `
+      <div class="section-title"><div><h3 class="mb-1">Checklist Pengetesan Bocor Body</h3><div class="muted">Catat tekanan dan unggah foto observasi tiap interval.</div></div></div>
+      <div class="body-layout">
+        <div class="hint-box">
+          <h3>Leak Test Procedure (Manifold)</h3>
+          <ol>
+<!--@@PROCEDURE_FORM@@-->
+          </ol>
+        </div>
+        <div class="hint-box">
+          <h3>Foto Referensi</h3>
+          <img src="${REF_IMAGE}" alt="Referensi pengetesan bocor body 1 jam 3 jam 12 jam" class="reference-image">
+          <div class="muted mt-2">Gunakan gambar ini sebagai referensi pembacaan tekanan pada output JPG.</div>
+        </div>
+      </div>
+      <div class="section mt-3"><h3 class="mb-2">Upload Foto Observasi</h3>
+        <div class="muted mb-3">Tiga slot bukti sesuai layout PPT. Foto otomatis dikecilkan dan dikompresi, dengan metadata waktu bila tersedia.</div>
+        ${photoCards()}
+      </div>
+      <div class="field-grid mt-3">
+        <div class="field"><label>Tekanan awal (psi)</label><input data-bind="bocorBody.tekananAwal" value="${escapeHtml(bb.tekananAwal)}" placeholder="Contoh: 350"></div>
+        <div class="field"><label>Penanda sudah dipasang</label>
+          <select data-bind="bocorBody.penandaTerpasang">
+            <option value="Sudah" ${bb.penandaTerpasang==='Sudah'?'selected':''}>Sudah</option>
+            <option value="Belum" ${bb.penandaTerpasang==='Belum'?'selected':''}>Belum</option>
+          </select>
+        </div>
+        <div class="field"><label>Tekanan 1 jam (psi)</label><input data-bind="bocorBody.tekanan1Jam" value="${escapeHtml(bb.tekanan1Jam)}"></div>
+        <div class="field"><label>Tekanan 3 jam (psi)</label><input data-bind="bocorBody.tekanan3Jam" value="${escapeHtml(bb.tekanan3Jam)}"></div>
+        <div class="field"><label>Tekanan min. 12 jam (psi)</label><input data-bind="bocorBody.tekanan12Jam" value="${escapeHtml(bb.tekanan12Jam)}"></div>
+        <div class="field"><label>Tekanan 1 malam (psi)</label><input data-bind="bocorBody.tekanan1Malam" value="${escapeHtml(bb.tekanan1Malam)}"></div>
+        <div class="field"><label>Hasil</label>
+          <select data-bind="bocorBody.hasil">
+            <option value="" ${!bb.hasil?'selected':''}>Belum ditentukan</option>
+            <option value="Tidak Bocor" ${bb.hasil==='Tidak Bocor'?'selected':''}>Tidak Bocor</option>
+            <option value="Bocor" ${bb.hasil==='Bocor'?'selected':''}>Bocor</option>
+          </select>
+        </div>
+        <div class="field"><label>Observasi</label><textarea data-bind="bocorBody.observasi" placeholder="Isi observasi selama pengujian">${escapeHtml(bb.observasi || '')}</textarea></div>
+      </div>
+      <div class="field mt-3"><label>Catatan Tambahan</label><textarea data-bind="bocorBody.catatan" placeholder="Tambahan catatan bila diperlukan">${escapeHtml(bb.catatan || '')}</textarea></div>`;
+  }
+  bindInputs();
+  bindGeneralRowInputs();
+  document.querySelectorAll('[data-photo-index]').forEach(n=>n.addEventListener('change',async e=>{
+    const file=e.target.files?.[0]; if(!file)return;
+    const idx=Number(e.target.dataset.photoIndex);
+    const target=e.target;target.disabled=true;
+    try {state.data.bocorBody.photos[idx]=await preparePhoto(file);saveDraft();renderChecklist();}
+    catch(err){alert('Foto gagal diproses: '+err.message);target.disabled=false;}
+  }));
+  document.querySelectorAll('[data-remove-photo]').forEach(n=>n.addEventListener('click',()=>{
+    state.data.bocorBody.photos[Number(n.dataset.removePhoto)]=null; saveDraft();renderChecklist();
+  }));
+}
+function renderGeneralPreview() {
+  const info = state.data.info;
+  const sections = applicableRows();
+  const totalItems = sections.reduce((n, [,items])=>n+items.length,0);
+  const noteText = String(state.data.general.partNote || '—');
+  const noteLength = noteText.trim() === '—' ? 0 : noteText.length;
+  const noteFontSize = Math.max(12, 16 - Math.min(4, Math.floor(noteLength / 220)));
+  const estimatedNoteLines = Math.max(1, Math.ceil(noteLength / 72));
+  const noteHeight = Math.max(120, Math.min(250, 92 + estimatedNoteLines * (noteFontSize + 2)));
+  const rowSpace = 675 - Math.max(0, noteHeight - 120);
+  // Tinggi baris ikut menyesuaikan jumlah item dan panjang catatan,
+  // sehingga bagian catatan tetap punya ruang tanpa overlap dengan footer.
+  const rowHeight = Math.max(34, Math.min(102, Math.floor(rowSpace / Math.max(1,totalItems+sections.length*0.7))));
+  const bodyRows = sections.map(([group, items]) => `
+    <tr class="group-row"><td colspan="5">${escapeHtml(group)}</td></tr>
+    ${items.map(({item, key}) => {
+      const [name, rec, unit] = item;
+      const current = state.data.general.rows[key] || { awal:'', akhir:'' };
+      return `<tr class="parameter-row"><td>${escapeHtml(name)}</td><td>${escapeHtml(rec)}</td><td class="center">${escapeHtml(unit)}</td><td>${escapeHtml(current.awal || '')}</td><td>${escapeHtml(current.akhir || '')}</td></tr>`;
+    }).join('')}`).join('');
+  return `
+    <div class="general-document" style="--parameter-height:${rowHeight}px;--note-height:${noteHeight}px;--note-font-size:${noteFontSize}px">
+      <div class="general-document-head">
+        <div class="general-document-eyebrow">TECHNICAL SUPPORT / REPAIR INDOOR</div>
+        <h1>CHECKLIST UNIT PENDINGIN</h1>
+        <div class="general-document-type">GENERAL CHECK · ${escapeHtml(currentUnitLabel())}</div>
+      </div>
+      <div class="general-document-section-label">INFORMASI PEKERJAAN</div>
+      <table class="info-inline general-info">
+        <tbody>
+          <tr><td>RON</td><td>${escapeHtml(info.ron)||'—'}</td><td>UNIT / MODEL</td><td>${escapeHtml(info.unit)||'—'}</td></tr>
+          <tr><td>KONSUMEN</td><td>${escapeHtml(info.konsumen)||'—'}</td><td>TEKNISI</td><td>${escapeHtml(info.technician)||'—'}</td></tr>
+        </tbody>
+      </table>
+      <div class="general-document-section-label">HASIL PEMERIKSAAN</div>
+      <table class="general-results">
+        <colgroup><col style="width:32%"><col style="width:27%"><col style="width:8%"><col style="width:16.5%"><col style="width:16.5%"></colgroup>
+        <thead><tr>
+          <th>PARAMETER / ITEM</th><th>REKOMENDASI</th><th class="center">UNIT</th>
+          <th>HASIL AWAL <span class="general-date">${formatDate(info.tanggalAwal)}</span></th>
+          <th>HASIL AKHIR <span class="general-date">${formatDate(info.tanggalAkhir)}</span></th>
+        </tr></thead>
+        <tbody>${bodyRows}</tbody>
+      </table>
+      <div class="general-part-block">
+        <div class="general-part-box">
+          <div class="general-part-box-title">CATATAN PERGANTIAN PART / TINDAKAN</div>
+          <div class="general-part-content">${escapeHtml(noteText)}</div>
+        </div>
+      </div>
+      <div class="general-document-footer"><span>REPAIR INDOOR · UNIT PENDINGIN</span><span>TECHNICAL SUPPORT</span></div>
+    </div>`;
+}
+function renderBocorBodyPreview() {
+  const info = state.data.info;
+  const bb = state.data.bocorBody;
+  const val = (v) => escapeHtml(v || '—');
+  const psi = (v) => escapeHtml(v || '—') + ' psi';
+  const photoCards = ['1 JAM', '3 JAM', '12 JAM'].map((name, i) => {
+    const photo = (bb.photos || [])[i];
+    return `<div class="body-evidence-card">
+      <div class="body-evidence-heading">${name}</div>
+      <div class="body-evidence-image">${photo?.data
+        ? `<img src="${photo.data}" alt="Foto aktual ${name}">`
+        : '<div class="body-evidence-empty">Belum ada foto aktual</div>'}</div>
+      <div class="body-evidence-time">${photo ? escapeHtml(photo.timestampText || 'Waktu tidak tersedia') : '—'}</div>
+    </div>`;
+  }).join('');
+  return `
+    <div class="body-output">
+      <header class="body-output-head">
+        <div class="body-output-eyebrow">TECHNICAL SUPPORT / REPAIR INDOOR</div>
+        <h1>CHECKLIST PENGETESAN BOCOR BODY</h1>
+        <div class="body-output-subtitle">UNIT PENDINGIN · LEAK TEST MANIFOLD</div>
+      </header>
+      <div class="body-output-label">INFORMASI PEKERJAAN</div>
+      <table class="body-output-info">
+        <tbody>
+          <tr><th>TEKNISI</th><td>${val(info.technician)}</td><th>KELUHAN</th><td>${val(info.claimSymptom)}</td></tr>
+          <tr><th>MODEL</th><td>${val(info.model)}</td><th>LOKASI</th><td>${val(info.lokasi)}</td></tr>
+          <tr><th>TIPE</th><td>${val(info.jenisUnit)}</td><th>TANGGAL</th><td>${formatDate(info.tanggalPengecekan)}</td></tr>
+          <tr><th>SERIAL NUMBER</th><td>${val(info.serialNumber)}</td><th>WAKTU</th><td>${val(info.startTime)} – ${val(info.endTime)}</td></tr>
+        </tbody>
+      </table>
+      <div class="body-output-label">DOKUMENTASI FOTO AKTUAL</div>
+      <div class="body-evidence-grid">${photoCards}</div>
+      <div class="body-output-bottom">
+        <div class="body-results-panel">
+          <div class="body-output-label">HASIL PENGUJIAN</div>
+          <table class="body-results-table">
+            <tbody>
+              <tr><th>Tekanan awal</th><td>${psi(bb.tekananAwal)}</td><th>Penanda</th><td>${val(bb.penandaTerpasang)}</td></tr>
+              <tr><th>1 Jam</th><td>${psi(bb.tekanan1Jam)}</td><th>3 Jam</th><td>${psi(bb.tekanan3Jam)}</td></tr>
+              <tr><th>12 Jam (opsional)</th><td>${psi(bb.tekanan12Jam)}</td><th>1 Malam</th><td>${psi(bb.tekanan1Malam)}</td></tr>
+              <tr><th>Kesimpulan</th><td colspan="3"><strong>${val(bb.hasil)}</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="body-comment-box">
+            <div class="body-comment-title">OBSERVASI / CATATAN</div>
+            <div class="body-comment-content">${val([bb.observasi, bb.catatan].filter(Boolean).join('\n'))}</div>
+          </div>
+        </div>
+        <div class="body-reference-panel">
+          <div class="body-output-label">PROSEDUR & REFERENSI</div>
+          <img class="body-reference-img" src="${REF_IMAGE}" alt="Referensi foto manifold 1 jam 3 jam 12 jam">
+          <ol>
+<!--@@PROCEDURE_OUTPUT@@-->
+          </ol>
+        </div>
+      </div>
+      <div class="body-output-footer">REPAIR INDOOR · UNIT PENDINGIN <span>TECHNICAL SUPPORT</span></div>
+    </div>`;
+}
+function renderPreview() {
+  const area = el('#printArea');
+  if (state.formType === 'general') { area.className = 'paper paper-general'; area.innerHTML = `<div class="output-content">${renderGeneralPreview()}</div>`; }
+  else { area.className = 'paper paper-body'; area.innerHTML = `<div class="output-content">${renderBocorBodyPreview()}</div>`; }
+  requestAnimationFrame(() => { fitDocumentSquare(); fitPreview(); });
+}
+function fitDocumentSquare(){
+ const paper=el('#printArea');
+ const content=paper?.querySelector('.output-content');
+ if(!content)return;
+ content.style.transform='none';
+ const available=1200;
+ const naturalWidth=Math.max(content.scrollWidth,1200);
+ const naturalHeight=content.scrollHeight;
+ const scale=state.formType==='general' ? 1 : Math.min(1,available/naturalWidth,available/Math.max(1,naturalHeight));
+ content.style.transform=`scale(${scale})`;
+ // Pertahankan posisi horizontal atas; tidak ada pemotongan foto atau tabel.
+}
+function fitPreview(){
+ const paper=el('#printArea'), frame=paper?.parentElement;
+ if (!paper || !frame || state.step!==3)return;
+ paper.style.transform='none'; paper.style.marginBottom='0';
+ const width=frame.clientWidth-4;
+ const native=1280;
+ const ratio=Math.min(1,width/native);
+ paper.style.transformOrigin='top left';paper.style.transform=`scale(${ratio})`;
+ paper.style.marginLeft='0';
+ paper.style.marginRight='0';
+ frame.style.height=Math.ceil(paper.scrollHeight*ratio+20)+'px';
+ paper.style.marginBottom='0';
+}
+window.addEventListener('resize',()=>{if(state.step===3)fitPreview();});
+function bindInputs() {
+  document.querySelectorAll('[data-bind]').forEach(node => {
+    node.addEventListener('input', onBoundInput);
+    node.addEventListener('change', onBoundInput);
+  });
+}
+function bindGeneralRowInputs() {
+  document.querySelectorAll('[data-general-key]').forEach(node => {
+    node.addEventListener('input', e => {
+      const key = e.target.dataset.generalKey;
+      const side = e.target.dataset.side;
+      if (!state.data.general.rows[key]) state.data.general.rows[key] = { awal:'', akhir:'' };
+      state.data.general.rows[key][side] = e.target.value;
+      saveDraft();
+    });
+  });
+}
+function setByPath(obj, path, value) {
+  const keys = path.split('.');
+  let ref = obj;
+  for (let i=0; i<keys.length-1; i++) { if (!(keys[i] in ref)) ref[keys[i]] = {}; ref = ref[keys[i]]; }
+  ref[keys[keys.length-1]] = value;
+}
+function onBoundInput(e) { const path = e.target.dataset.bind; if (!path) return; setByPath(state.data, path, e.target.value); saveDraft();
+ if(path==='general.unitType'){renderChecklist();} }
+
+function readExifDate(buffer){
+ try {
+ const v=new DataView(buffer),limit=v.byteLength;
+ if(limit<12||v.getUint16(0)!==0xFFD8)return null;
+ let p=2;
+ while(p+4<limit){
+   if(v.getUint8(p)!==255)break;
+   const marker=v.getUint8(p+1),len=v.getUint16(p+2);
+   if(len<2||p+2+len>limit)break;
+   if(marker===225 && p+10<limit && String.fromCharCode(...new Uint8Array(buffer,p+4,4))==='Exif'){
+     const t=p+10, le=v.getUint16(t)===0x4949;
+     if(!le&&v.getUint16(t)!==0x4D4D)break;
+     const rd16=(n)=>v.getUint16(n,le),rd32=(n)=>v.getUint32(n,le);
+     const readAscii=(off,count)=>{
+       if(off<0||off+count>limit||count>100)return '';
+       return String.fromCharCode(...new Uint8Array(buffer,off,count)).replace(/\0/g,'').trim();
+     };
+     const entries=(rel)=>{
+       const pos=t+rel;if(rel<0||pos+2>limit)return [];
+       const n=rd16(pos);if(n>200||pos+2+n*12>limit)return [];
+       return Array.from({length:n},(_,i)=>pos+2+i*12);
+     };
+     let exif=0,desc='';
+     for(const item of entries(rd32(t+4))){
+       const tag=rd16(item),count=rd32(item+4),off=rd32(item+8);
+       if(tag===0x8769)exif=off;
+       if(tag===0x0132 && count>=19)desc=readAscii(t+off,count);
+     }
+     let taken='';
+     if(exif)for(const item of entries(exif)){
+       const tag=rd16(item),count=rd32(item+4),off=rd32(item+8);
+       if((tag===0x9003||tag===0x9004)&&count>=19){taken=readAscii(t+off,count);if(tag===0x9003)break;}
+     }
+     const match=(taken||desc).match(/^(\d{4}):(\d{2}):(\d{2}) (\d{2}):(\d{2}):(\d{2})/);
+     if(match)return `${match[3]}/${match[2]}/${match[1]} ${match[4]}:${match[5]}:${match[6]}`;
+     break;
+   }
+   p+=len+2;
+ }
+ }catch(e){console.warn('EXIF metadata unavailable',e)}
+ return null;
+}
+async function preparePhoto(file){
+ if(!file.type.startsWith('image/'))throw new Error('File harus berupa gambar yang didukung browser.');
+ const exif=readExifDate(await file.arrayBuffer());
+ const timestampText=exif ? 'EXIF diambil: '+exif : 'EXIF tidak ada · File diubah: '+new Date(file.lastModified).toLocaleString('id-ID');
+ const url=URL.createObjectURL(file);
+ try {
+   const img=await new Promise((res,rej)=>{
+      const image=new Image();image.onload=()=>res(image);image.onerror=()=>rej(new Error('Format gambar tidak dapat dibuka'));image.src=url;
+   });
+   let max=1100;const canvas=document.createElement('canvas');
+   const k=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
+   canvas.width=Math.max(1,Math.round(img.naturalWidth*k));canvas.height=Math.max(1,Math.round(img.naturalHeight*k));
+   const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
+   ctx.drawImage(img,0,0,canvas.width,canvas.height);
+   let data=canvas.toDataURL('image/jpeg',.76);
+   while(data.length>210000&&max>580){
+     max=Math.round(max*.8);const k2=Math.min(1,max/Math.max(img.naturalWidth,img.naturalHeight));
+     canvas.width=Math.max(1,Math.round(img.naturalWidth*k2));canvas.height=Math.max(1,Math.round(img.naturalHeight*k2));
+     ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+     data=canvas.toDataURL('image/jpeg',.70);
+   }
+   return {data, timestampText, bytes:Math.round(data.length*.75), name:file.name};
+ }finally {URL.revokeObjectURL(url)}
+}
+
+async function downloadJpg() {
+  const target = el('#printArea');
+  const btn = el('#downloadJpgBtn');
+  const original = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '<i class="bi bi-hourglass-split me-1"></i>Memproses...';
+  try {
+    fitDocumentSquare();
+    const exportRoot=document.createElement('div');
+    exportRoot.style.cssText='position:fixed;top:0;left:0;width:1280px;height:1280px;z-index:-1;pointer-events:none;';
+    const clone=target.cloneNode(true);
+    clone.style.transform='none';
+    clone.style.margin='0';
+    exportRoot.appendChild(clone);
+    document.body.appendChild(exportRoot);
+    let canvas;
+    try {
+      await Promise.all(Array.from(clone.querySelectorAll('img')).map(img=>img.decode().catch(()=>{})));
+      canvas=await html2canvas(clone, { backgroundColor:'#ffffff', scale:1, width:1280, height:1280, useCORS:true, logging:false, scrollX:0, scrollY:0, windowWidth:1280, windowHeight:1280 });
+    } finally {exportRoot.remove();}
+    const link = document.createElement('a');
+    link.download = state.formType === 'general' ? 'repair-indoor-pendingin-general.jpg' : 'repair-indoor-pendingin-bocor-body.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.92);
+    link.click();
+  } catch (err) {
+    alert('Gagal membuat JPG. Pastikan koneksi tersedia untuk memuat library export.');
+    console.error(err);
+  } finally { btn.disabled = false; btn.innerHTML = original; }
+}
+function nextStep() { if(state.formType==='general' && state.step===1 && !state.data.general.unitType){ alert('Pilih jenis unit terlebih dahulu.'); el('#generalType')?.focus(); return; } if (state.step < 3) { state.step += 1; renderAll(); window.scrollTo({top:0,behavior:'instant'}); } }
+function prevStep() { if (state.step > 1) { state.step -= 1; renderAll(); } }
+els('[data-form-choice]').forEach(btn => btn.addEventListener('click', () => chooseForm(btn.dataset.formChoice)));
+el('#backHomeBtn').addEventListener('click', goHome);
+el('#saveDraftBtn').addEventListener('click', () => { saveDraft(); alert('Draft disimpan di browser ini.'); });
+el('#resetDraftBtn').addEventListener('click', resetDraft);
+el('#nextBtn').addEventListener('click', nextStep);
+el('#prevBtn').addEventListener('click', prevStep);
+el('#printBtn').addEventListener('click', () => window.print());
+el('#downloadJpgBtn').addEventListener('click', downloadJpg);
+</script>
+</body>
+</html>

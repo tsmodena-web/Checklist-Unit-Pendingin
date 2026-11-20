@@ -1,0 +1,17 @@
+{
+  "procedureForm": [
+    "Hubungkan manifold ke jalur evaporator/kondensor.",
+    "Berikan tekanan (kompresor / nitrogen) hingga 300–400 psi.",
+    "Tutup valve setelah tekanan tercapai.",
+    "Tandai posisi jarum (isolasi/marker).",
+    "Amati penurunan tekanan pada 1 jam, 3 jam, dan minimal 12 jam bila perlu.",
+    "Bandingkan posisi jarum dengan penanda awal."
+  ],
+  "procedureOutput": [
+    "Hubungkan manifold ke jalur evaporator/kondensor.",
+    "Beri tekanan sesuai prosedur: 300–400 psi.",
+    "Tutup valve dan tandai posisi jarum.",
+    "Amati 1 jam, 3 jam, dan 12 jam bila diperlukan.",
+    "Bandingkan dengan penanda awal."
+  ]
+}
