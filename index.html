@@ -358,6 +358,12 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]),
       .step { font-size: .8125rem; min-height: 44px; }
       .toolbar { border-radius: var(--ui-r-card) var(--ui-r-card) 0 0; }
     }
+    /* W48: tombol header form sebaris di HP (tidak turun baris) */
+    @media (max-width: 700px) {
+      .ws-actions { flex-wrap: nowrap !important; width: 100%; gap: 8px !important; }
+      .ws-actions button { flex: 1 1 0; min-width: 0; padding: 10px 6px; white-space: nowrap; }
+    }
+    .btn-soft:focus-visible, .btn-primary2:focus-visible, .btn-danger2:focus-visible, .choice:focus-visible, .check-accordion summary:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -399,7 +405,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]),
           <h2 id="workspaceTitle" class="mb-1">Form</h2>
           <p id="workspaceDesc" class="muted mb-0"></p>
         </div>
-        <div class="d-flex gap-2 flex-wrap">
+        <div class="d-flex gap-2 flex-wrap ws-actions">
           <button class="btn-soft" id="backHomeBtn"><i class="bi bi-arrow-left me-1"></i>Ganti Form</button>
           <button class="btn-soft" id="saveDraftBtn"><i class="bi bi-floppy me-1"></i>Simpan Draft</button>
           <button class="btn-danger2" id="resetDraftBtn"><i class="bi bi-trash3 me-1"></i>Reset</button>
