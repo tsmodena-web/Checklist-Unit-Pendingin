@@ -304,6 +304,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):not([type=range]),
     .check-accordion summary { background: #fff; border-bottom: 1px solid var(--line); font-weight: 700; min-height: 44px; }
     .row-item { border-top: 1px solid var(--line); }
     .reference-image { border-radius: 10px; border: 1px solid var(--line); }
+    .step { cursor: pointer; }
+    .step:focus-visible { outline: 3px solid rgba(124,92,240,.35); outline-offset: 2px; }
     .stepper { background: #eef0f5; border: 1px solid #eef0f5; border-radius: 9px; padding: 4px; gap: 4px; }
     .step { min-height: 44px; border-radius: 9px; font-weight: 600; font-size: .875rem; color: var(--muted); }
     .step span { background: #d0d5dd; color: var(--ink); font-weight: 600; }
@@ -958,6 +960,13 @@ el('#saveDraftBtn').addEventListener('click', () => { saveDraft(); alert('Draft 
 el('#resetDraftBtn').addEventListener('click', resetDraft);
 el('#nextBtn').addEventListener('click', nextStep);
 el('#prevBtn').addEventListener('click', prevStep);
+// Stepper bebas diklik: semua langkah bisa dibuka tanpa terkunci field wajib (validasi tetap di tombol Berikutnya).
+els('[data-step-indicator]').forEach(node => {
+  const go = () => { const n = Number(node.dataset.stepIndicator); if (n === state.step) return; state.step = n; renderAll(); window.scrollTo({top:0,behavior:'instant'}); };
+  node.setAttribute('role','button'); node.setAttribute('tabindex','0');
+  node.addEventListener('click', go);
+  node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+});
 el('#printBtn').addEventListener('click', () => window.print());
 el('#downloadJpgBtn').addEventListener('click', downloadJpg);
 </script>
